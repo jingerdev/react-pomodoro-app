@@ -1,38 +1,78 @@
+body {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #676161;
+}
+
+button {
+  cursor: pointer;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: '0 auto';
 }
 
-.App-link {
-  color: #61dafb;
+.timer-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.start-button {
+  min-width: 90px;
+  margin-top: 30px;
+  margin: 10px;
+  font-size: 16px;
+  background-color: #D68282;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
+.restart-button {
+  min-width: 90px;
+  margin-top: 30px;
+  margin: 10px;
+  font-size: 16px;
+  background: none;
+  border: 1px solid #D68282;
+  border-radius: 10px;
+  padding: 10px;
+  color: #676161;
+}
+
+.timer-options {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  font-size: 18px;
+  margin: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 70px;
+  border: 0.05em solid #D68282;
+  color: #676161;
+  background-color: #fff;
+  min-width: 90px;
+}
+
+.active {
+  background-color: #D68282;
+  color: #fff;
+}
+
+.description {
+  font-size: 18px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.context {
+  margin-left: 10px;
 }
