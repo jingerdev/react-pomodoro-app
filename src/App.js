@@ -152,25 +152,25 @@ function App() {
       <div>
         <h1>Pomodoro App</h1>
         <div className="description">
-          <img src={content[currentTimer].icon} width={35}/>
+          <img src={content[currentTimer].icon} width={35} alt="icon"/>
           <p className="context">{content[currentTimer].text}</p>
         </div>
         <div className="timer-options">
           <button
             id={25}
-            className={`item ${currentTimer == 25 ? 'active' : '' }`}
+            className={`item ${currentTimer === 25 ? 'active' : '' }`}
             onClick={changeTimer.bind(this)}>
             25:00
           </button>
           <button 
             id={5}
-            className={`item ${currentTimer == 5 ? 'active' : ''}`}
+            className={`item ${currentTimer === 5 ? 'active' : ''}`}
             onClick={changeTimer.bind(this)}>
             5:00
           </button>
           <button 
             id={15}
-            className={`item ${currentTimer == 15 ? 'active' : ''}`}
+            className={`item ${currentTimer === 15 ? 'active' : ''}`}
             onClick={changeTimer.bind(this)}>
             15:00
           </button>
@@ -192,11 +192,22 @@ function App() {
         </button>
 
         <div className="credits">
-          <h1>Credits:</h1>
-          <a href="https://github.com/vydimitrov/react-countdown-circle-timer" target="_blank">
-            react-countdown-circle-timer by Vasil Dimitrov
-          </a>
-        </div>
+          <div>
+           <h3>Tools:</h3>
+            <a href="https://reactjs.org/" target="_blank" rel="noreferrer">&nbsp;
+            React
+            </a> -
+            <a href="https://github.com/vydimitrov/react-countdown-circle-timer" target="_blank" rel="noreferrer">&nbsp;
+            react-countdown-circle-timer 
+            </a> -
+            <a href="https://www.figma.com/community/plugin/735098390272716381/Iconify" target="_blank" rel="noreferrer">&nbsp;
+            Figma Iconfiy
+            </a>
+          <hr></hr>
+           <p>Built by <a href="https://jenniferricardo.com" target="_blank" rel="noreferrer">Jennifer Ricardo</a> - 
+            <a href="https://github.com/jingerdev/react-pomodoro-app" target="_blank" rel="noreferrer"> Repo</a>
+           </p>
+          </div></div>
       </div>
     </div>
   )
