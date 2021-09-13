@@ -3,6 +3,11 @@ body {
   color: #676161;
 }
 
+a {
+  text-decoration: none;
+  color: #D68282
+}
+
 button {
   cursor: pointer;
 }
@@ -75,4 +80,31 @@ button {
 
 .context {
   margin-left: 10px;
+}
+
+.modal {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  margin: 0 auto;
+  z-index: 9;
+  background-color:rgba(0,0,0, 0.2);
+  width: 100%;
+}
+
+.modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  min-height: 100px;
+  width: 300px;
+  background-color: #fff;
+  opacity: 1;
+
+}
+
+.credits {
+  margin-top: 100px;
+  padding: 20px 30px;
 }

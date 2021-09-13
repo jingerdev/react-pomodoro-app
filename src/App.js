@@ -8,36 +8,44 @@ import coffee from './assets/coffee.svg'
 import notes from './assets/notes.svg'
 
 const content = {
-  'work': 'Work, work, work!',
-  'shortBreak': 'Coffee break!',
-  'longBreak': 'You’ve worked hard. Power nap time!',
+  '25': {
+    text: 'Work, work, work, work!',
+    icon: notes
+  },
+  '5': {
+    text: 'Coffee break!',
+    icon: coffee
+  },
+  '15': {
+    text: 'You’ve worked hard. Power nap time!',
+    icon: sleep
+  },
 }
 
 function App() {
-  const [isPlaying, setIsPlaying] = React.useState(true)
+  const [isPlaying, setIsPlaying] = React.useState(false)
   const [key, setKey] = React.useState(0)
+  // Set default minutes duration
+  const [duration, setDuration] = React.useState(25*60)
+  const [modal, showModal] = React.useState(false)
+  // We need to track if timer is paused to not allow user
+  //  to switch timers
+  const [isPaused, setIsPaused] = React.useState(false)
+  const [tempTimer, setTempTimer] = React.useState(null)
 
   const toggleTimer = () => {
+    setIsPaused(true)
     setIsPlaying(!isPlaying)
   }
   
   const renderTime = ({ remainingTime }) => {
-    let displayTime = '01:00'
+    let displayTime = '00:00'
     if (remainingTime > 0) {
       let minutes = Math.floor(remainingTime / 60)
       let seconds = remainingTime % 60
       minutes = minutes < 10 ? `0${minutes}` : minutes
       seconds = seconds < 10 ? `0${seconds}` : seconds
       displayTime = `${minutes}:${seconds}`
-    } else {
-      // const audio = new Audio(timerSound)
-      // audio.play()
-      // audio.pause
-      // audio.currentTime = 0 // restart audio
-      console.log('===> ZERO')
-    }
-    if (remainingTime === 0) {
-      console.log('===> ZERO')
     }
     return (
       <div>
@@ -54,7 +62,7 @@ function App() {
         ['#D68282', 0.33]
       ]}
       key={key}
-      // onComplete={() => [true, 1000]}
+      onComplete={() => onTimerComplete()}
       strokeWidth={10}
       size={220}
     >
@@ -62,23 +70,108 @@ function App() {
     </CountdownCircleTimer>
   )
 
+  const onTimerComplete = () => {
+    // Play notification sound
+    const audio = new Audio(timerSound)
+    audio.play()
+    // Set isPaused to false meaning timer has completely stopped
+    setIsPaused(false)
+    setIsPlaying(false)
+    restartTimer()
+    return [false, 1000]
+  }
+
+  const changeTimer = (e) => {
+    const { id } = e.target
+    const timer = Number(id)
+    // Set temporary timer
+    setTempTimer(timer)
+    // Check first if duration is still playing
+    if (isPlaying || isPaused) {
+      showModal(true)
+    } else {
+      setDuration(60*timer)
+      restartTimer()
+    }
+  }
+
+  const continueChangeTimer = () => {
+    // If modal was shown because user is switching timer,
+    //  we have to set a new duration.
+    //  If user clicked restart, the duration stays the same
+    if (tempTimer) {
+      setDuration(60*tempTimer)
+    }
+    restartTimer()
+    showModal(false)
+  }
+
+  const onRestartTimer = () => {
+    if (isPlaying || isPaused) {
+      showModal(true)
+    } else {
+      restartTimer()
+    }
+  }
+
+  const restartTimer = () => {
+    setIsPaused(false)
+    setKey(prev => prev + 1)
+    setIsPlaying(false)
+  }
+
+  const closeModal = () => {
+    showModal(false)
+    setTempTimer(null)
+  }
+
+  const modalContent = () => {
+    return (
+      <div className="modal">
+        <div className="modal-content">
+          <p>Timer is still running/paused! If you continue, the timer will restart.</p>
+          <button
+            className="start-button"
+            onClick={() => closeModal()}>
+              Close
+          </button>
+          <button
+            className="restart-button"
+            onClick={() => continueChangeTimer()}>
+              Continue
+          </button>
+        </div>
+      </div>
+    )
+  }
+  const currentTimer = duration/60
 
   return (
     <div className="App">
+      {modal && modalContent()}
       <div>
         <h1>Pomodoro App</h1>
         <div className="description">
-          <img src={notes} width={35}/>
-          <p className="context">{content.work}</p>
+          <img src={content[currentTimer].icon} width={35}/>
+          <p className="context">{content[currentTimer].text}</p>
         </div>
         <div className="timer-options">
-          <button className="item active">
+          <button
+            id={25}
+            className={`item ${currentTimer == 25 ? 'active' : '' }`}
+            onClick={changeTimer.bind(this)}>
             25:00
           </button>
-          <button className="item">
+          <button 
+            id={5}
+            className={`item ${currentTimer == 5 ? 'active' : ''}`}
+            onClick={changeTimer.bind(this)}>
             5:00
           </button>
-          <button className="item">
+          <button 
+            id={15}
+            className={`item ${currentTimer == 15 ? 'active' : ''}`}
+            onClick={changeTimer.bind(this)}>
             15:00
           </button>
         </div>
@@ -87,16 +180,23 @@ function App() {
           {timer({
             isPlaying: isPlaying,
             key: key,
-            duration: 60
+            duration: duration
           })}
         </div>
 
         <button className='start-button' onClick={() => toggleTimer()}>
           {isPlaying ? 'Pause' : 'Start'}
         </button>
-        <button className='restart-button' onClick={() => setKey(prev => prev + 1)}>
+        <button className='restart-button' onClick={() => onRestartTimer()}>
           Restart
         </button>
+
+        <div className="credits">
+          <h1>Credits:</h1>
+          <a href="https://github.com/vydimitrov/react-countdown-circle-timer" target="_blank">
+            react-countdown-circle-timer by Vasil Dimitrov
+          </a>
+        </div>
       </div>
     </div>
   )
