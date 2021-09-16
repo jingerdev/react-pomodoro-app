@@ -1,15 +1,40 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "simporo - stay focused!",
+  "name": "simporo",
+  "descriptions": "A pomodoro timer to help you stay focused at work.",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#fdb196",
+  "background_color": "#ffffff",
+  "shortcuts": [
+    {
+      "name": "simporo - stay focused!",
+      "short_name": "simporo",
+      "url": ".",
+      "icons": [
+        {
+          "src": "logo192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
 }

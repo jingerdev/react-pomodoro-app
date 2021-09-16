@@ -1,21 +1,44 @@
 body {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #676161;
+  padding: 0;
+  margin: 0;
 }
 
 a {
   text-decoration: none;
-  color: #D68282
+  color: #fdb196
 }
 
 button {
   cursor: pointer;
 }
 
+main {
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  display: flex;
+}
+
+.title {
+  /* font-family: 'Patrick Hand'; */
+  padding-left: 10px;
+  font-family: 'Acme';
+  font-size: 20px;
+}
+
 .App {
   text-align: center;
-  display: flex;
-  justify-content: center;
   margin: '0 auto';
 }
 
@@ -30,7 +53,7 @@ button {
   margin-top: 30px;
   margin: 10px;
   font-size: 16px;
-  background-color: #D68282;
+  background-color: #fdb196;
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -43,36 +66,43 @@ button {
   margin: 10px;
   font-size: 16px;
   background: none;
-  border: 1px solid #D68282;
+  border: 1px solid #fdb196;
   border-radius: 10px;
   padding: 10px;
   color: #676161;
+}
+
+button:focus, 
+button:active {
+  outline: none;
+}
+a, button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .timer-options {
   display: flex;
   justify-content: center;
+  padding: 30px;
 }
 
 .item {
   font-size: 18px;
-  margin: 30px;
+  margin: 0 20px;
   padding: 10px;
   border-radius: 10px;
   min-width: 70px;
-  border: 0.05em solid #D68282;
+  border: 0.05em solid #fdb196;
   color: #676161;
   background-color: #fff;
-  min-width: 90px;
 }
 
 .active {
-  background-color: #D68282;
+  background-color: #fdb196;
   color: #fff;
 }
 
 .description {
-  font-size: 18px;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -83,7 +113,7 @@ button {
 }
 
 .modal {
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,4 +140,11 @@ button {
   padding: 20px 30px;
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .item {
+    font-size: 15px;
+    margin: 10px;
+  }
 }
