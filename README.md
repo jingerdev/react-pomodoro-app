@@ -43,6 +43,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Demo 
 [View Demo](https://simporo.jenniferricardo.com/)
+
 [Project Details](https://jenniferricardo.com/projects/simporo-stay-focused-react-pomodoro-app)
 
 ## Credits
@@ -51,3 +52,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - [Figma Iconify](https://www.figma.com/community/plugin/735098390272716381/Iconify)
 - [React Countdown Circle Timer](https://github.com/vydimitrov/react-countdown-circle-timer) by  Vasil Dimitrov
    
+   
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I567J3I)
