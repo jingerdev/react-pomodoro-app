@@ -6,6 +6,9 @@ It was developed by Francesco Cirillo in 1980s, a student who used to use a toma
 
 In this app, it uses the traditional 25 minutes interval for work time, 5 minutes for short break and 15 minutes for long break.
 
+## Screenshot
+![Screenshot](https://jenniferricardo.com/wp-content/uploads/2021/09/simporo-stay-focused-react-app-1.png)
+
 ## Installation
 
 1. Clone the project repository.
@@ -30,6 +33,10 @@ In this app, it uses the traditional 25 minutes interval for work time, 5 minute
 4. Start the project
 	```
 	yarn start
+	```
+	or
+	```
+	npm start
 	```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
